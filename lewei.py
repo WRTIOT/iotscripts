@@ -49,7 +49,7 @@ class LeWeiLib(object):
                      OTHR    其他类型
         '''
         #print "LeWeiLib_log::getSensorsWithGateway,sensorType:%r" % sensorType
-        url = "http://wwww.lewei50.com/api/v1/user/getSensorsWithGateway"
+        url = "http://www.lewei50.com/api/v1/user/getSensorsWithGateway"
 
         if sensorType != "":
             url = url + "?sensorType=" + sensorType
@@ -236,7 +236,7 @@ class LeWeiLib(object):
         
         '''
         #print "LeWeiLib_log::updateSensors,gateway_id:%s,sensors:%r" % (gateway_id,sensors)
-        url = "http://wwww.lewei50.com/api/v1/gateway/updatesensors/%s" % gateway_id
+        url = "http://www.lewei50.com/api/v1/gateway/updatesensors/%s" % gateway_id
         '''
         post msg:
         [
@@ -288,7 +288,7 @@ class LeWeiLib(object):
                   }
         '''
         #print "LeWeiLib_log::gatewayAddSensor,gateway_id:%s,sensors:%r" % (gateway_id,sensors)
-        url = "http://wwww.lewei50.com/api/v1/gateway/addsensor/%s" % gateway_id
+        url = "http://www.lewei50.com/api/v1/gateway/addsensor/%s" % gateway_id
         
         try:
             post_body =  json.dumps(sensors)
@@ -322,7 +322,7 @@ class LeWeiLib(object):
                   }
         '''
         #print "LeWeiLib_log::sensorUpdateSensorInfo,sensor_id:%s,sensors:%r" % (sensor_id,sensors)
-        url = "http://wwww.lewei50.com/api/v1/sensor/UpdateSensorInfo/%s" % sensor_id
+        url = "http://www.lewei50.com/api/v1/sensor/UpdateSensorInfo/%s" % sensor_id
         
         try:
             post_body =  json.dumps(sensors)
