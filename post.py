@@ -8,15 +8,14 @@ import lewei,time
 '''
 
 def run():
-    
-    sensorData = {"bat":0, "temp":0} #用字典管理传感器，"bat","temp"是传感器名称，要和你在乐联网上的传感器名称一样
-    batValue = 0  #电池电压
-    tempValue = 0 #温度
 
-    lw = lewei.LeWeiLib("XXXXXXXXXXXXXXXXXXXXXXXXXXX") #传入用户key
+    sensorData = {"BH":0, "pm1":0}
+    batValue = 80  # 光照
+    tempValue = 200 # 颗粒物
+
+    lw = lewei.LeWeiLib("c99aa8b4c7e64362ac37671d3df5f02c") #传入用户key
     lw.TcpControlInit("01") #初始化TCP反向控制连接,需传入网关号
-    
-    
+
     lasttime = time.time()
     while 1:
         time.sleep(0.1)
@@ -26,12 +25,10 @@ def run():
 
         if time.time() - lasttime > 10:
             lasttime = time.time()
-            
-            sensorData["bat"] = batValue
-            sensorData["temp"] = tempValue
-            batValue += 1
-            tempValue += 1
-            
+
+            sensorData["BH"] = batValue
+            sensorData["pm1"] = tempValue
+
             ret = lw.updateSensors("01", sensorData) #传入网关号及传感器数据
             if ret != -1:
                 if ret["Successful"] == True:
@@ -40,7 +37,7 @@ def run():
                     print "上传传感器数据失败！Message：",ret["Message"]
             else:
                 print "遇到错误，无法上传数据"
-            
+
 
 if __name__ == "__main__":
     run()
